@@ -1,0 +1,21 @@
+{
+  "canisters": {
+    
+    "health_backend": {
+      "source": ["src/health_backend/main.mo"],
+      "type": "motoko"
+    },
+    "health_frontend": {
+      "source": ["src/health_frontend/dist"],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
