@@ -20,30 +20,37 @@
 
 > **The first decentralized AI system designed specifically for health communication in Kenya's indigenous languages**
 
-🎯 **Mission Critical**: Most digital health tools ignore Kenya's 40+ local languages, creating dangerous communication barriers. We're changing that.
+### 🩺 Context & Background
+Kenya's local languages like **Kikuyu, Luo, Luhya, Kalenjin, and Kamba** are widely spoken, yet most health applications and AI-powered tools focus exclusively on high-resource languages (mainly English). This creates a critical language gap that limits equitable access to health information and effective communication with healthcare providers.
 
 <table>
 <tr>
 <td width="50%">
 
-### 🚨 The Problem
-- **67%** of Kenyans speak local languages as primary language
-- **Medical errors** due to poor translation
-- **Zero** public health datasets in local Kenyan dialects
-- **Limited** early diagnosis tools for rural communities
+### ⚠️ Critical Problems
+- **Language Barrier**: Patients struggle with health information not available in local languages
+- **Limited Data**: No comprehensive health dataset exists for Kenyan local languages
+- **Inaccurate AI Tools**: Translation models misinterpret critical health terms, endangering patients
+- **Lack of Early Diagnosis**: No AI-driven system for early disease detection in local languages
 
 </td>
 <td width="50%">
 
-### ✅ Our Solution
-- **AI-powered** multilingual health communication
-- **Decentralized** system on Internet Computer Protocol
-- **Community-driven** data collection with incentives
-- **Open-source** and accessible to all
+### ✅ Our Revolutionary Solution
+- **Comprehensive multilingual health dataset** in Kenyan languages
+- **AI-powered translation & diagnosis** optimized for medical contexts
+- **Early disease detection support** for cancer, malaria, and chronic conditions
+- **Decentralized system** ensuring privacy and accessibility
 
 </td>
 </tr>
 </table>
+
+### 👥 Who Benefits?
+- **🏥 Patients** in rural and urban communities speaking local languages
+- **👩‍⚕️ Healthcare providers** and community health workers
+- **🔬 Researchers** and data scientists in language AI development
+- **🏛️ Policy makers** designing inclusive health strategies
 
 ---
 
@@ -107,61 +114,246 @@ graph TD
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ 
-- DFX (Internet Computer SDK)
-- Docker & Docker Compose
-- Python 3.9+
+- **Node.js 18+** - [Download here](https://nodejs.org/)
+- **DFX (Internet Computer SDK)** - Internet Computer development kit
+- **Docker & Docker Compose** - For AI services containerization
+- **Python 3.9+** - For AI/ML components
 
-### 🔥 One-Command Setup
+### 🔥 Complete Setup Guide
 
+#### Step 1: Install DFX (Internet Computer SDK)
 ```bash
-# Clone and setup everything
-git clone https://github.com/your-username/kenya-health-language-ai.git
-cd kenya-health-language-ai
-./scripts/setup.sh
-```
-
-<details>
-<summary>📋 Manual Installation (Click to expand)</summary>
-
-### 1. Install DFX (ICP SDK)
-```bash
+# Install DFX SDK
 sh -ci "$(curl -fsSL https://smartcontracts.org/install.sh)"
+
+# Verify installation
+dfx --version
 ```
 
-### 2. Setup Local Development
+#### Step 2: Clone and Setup Project
 ```bash
-# Start ICP local network
-dfx start --background
+# Clone the repository
+git clone https://github.com/robinhoodai/kenya-health-language-ai.git
+cd kenya-health-language-ai
 
-# Deploy canisters
-dfx deploy
-
-# Install dependencies
+# Install Node.js dependencies
 npm install
 ```
 
-### 3. Launch AI Services
+#### Step 3: Initialize ICP Local Development
+```bash
+# Start the local Internet Computer replica
+dfx start --background
+
+# Deploy all canisters to local network
+dfx deploy
+
+# Generate Candid interfaces
+npm run generate
+```
+
+#### Step 4: Launch AI Services
 ```bash
 # Start AI API containers
 cd ai-api
 docker-compose up -d
 
-# Run frontend
-cd ../frontend
-npm run dev
+# Verify AI services are running
+curl http://localhost:8000/health
 ```
 
-### 4. Access Applications
-- **Frontend**: http://localhost:3000
-- **AI API**: http://localhost:8000
-- **Canister URLs**: Check `dfx deploy` output
+#### Step 5: Start Development Servers
+```bash
+# Terminal 1: Start frontend development server
+cd frontend
+npm start
+# Frontend available at: http://localhost:8080
+
+# Terminal 2: Start mobile app (optional)
+cd mobile-app
+npx react-native run-android  # or run-ios
+```
+
+### 🌐 Access Your Applications
+- **Frontend Dashboard**: http://localhost:8080
+- **AI API Documentation**: http://localhost:8000/docs
+- **Canister Dashboard**: http://localhost:4943?canisterId={asset_canister_id}
+
+<details>
+<summary>🔧 Advanced DFX Commands</summary>
+
+```bash
+# Check canister status
+dfx canister status --all
+
+# View canister logs
+dfx canister logs health_data
+
+# Stop local replica
+dfx stop
+
+# Reset local state (fresh start)
+dfx start --clean --background
+
+# Deploy to IC mainnet
+dfx deploy --network ic
+
+# Check cycles balance
+dfx wallet balance --network ic
+```
 
 </details>
 
----
+<details>
+<summary>🐛 Troubleshooting</summary>
 
-## 📊 Project Structure
+**Common Issues:**
+
+1. **Port conflicts**: Kill processes on ports 4943, 8000, 8080
+```bash
+lsof -ti:4943,8000,8080 | xargs kill -9
+```
+
+2. **DFX not found**: Add to PATH
+```bash
+echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+3. **Docker issues**: Ensure Docker daemon is running
+```bash
+sudo systemctl start docker  # Linux
+# or restart Docker Desktop
+```
+
+4. **Node modules**: Clear and reinstall
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
+
+</details>
+
+## 🏗️ Development Methodology
+
+### 📊 Our Systematic Approach
+
+<div align="center">
+
+```mermaid
+graph LR
+    A[📋 Data Collection] --> B[🔍 Data Processing]
+    B --> C[🤖 Model Development]
+    C --> D[💻 System Development]
+    D --> E[🧪 Testing & Deployment]
+    E --> F[🚀 Production]
+    
+    style A fill:#e3f2fd
+    style B fill:#f3e5f5
+    style C fill:#fff3e0
+    style D fill:#e8f5e8
+    style E fill:#fce4ec
+    style F fill:#e0f2f1
+```
+
+</div>
+
+### 🎯 Phase-by-Phase Breakdown
+
+<details>
+<summary><strong>Phase 1: Data Collection 📋</strong></summary>
+
+**Methodology:**
+- **Multi-regional recruitment** across different counties and language groups
+- **Structured interviews** using digital recorders with health professionals
+- **Community engagement** through local health workers and language experts
+- **Secure cloud storage** with encryption and access controls
+
+**Quality Assurance:**
+- Language expert validation
+- Medical professional review
+- Cultural context verification
+- Privacy compliance checks
+
+</details>
+
+<details>
+<summary><strong>Phase 2: Data Processing 🔍</strong></summary>
+
+**Technical Pipeline:**
+- **Audio preprocessing**: Noise removal, segmentation, normalization
+- **Transcription workflow**: Expert linguists + Label Studio assisted annotation
+- **Quality validation**: Super reviewers for accuracy verification
+- **Data anonymization**: Remove PII, maintain medical context
+
+**Privacy & Ethics:**
+- GDPR compliance framework
+- Informed consent protocols
+- Data minimization principles
+- Secure multi-party computation
+
+</details>
+
+<details>
+<summary><strong>Phase 3: Model Development 🤖</strong></summary>
+
+**AI/ML Stack:**
+- **Base models**: OpenBioLLM, Meditron, BioMistral
+- **Fine-tuning**: Domain-specific adaptation for Kenyan health contexts
+- **Multimodal support**: Speech-to-text, text-to-speech integration
+- **Evaluation metrics**: BLEU, ROUGE, medical terminology accuracy
+
+**Model Architecture:**
+```python
+# Simplified model pipeline
+Health_LLM = FineTune(
+    base_model="OpenBioLLM",
+    languages=["kikuyu", "luo", "luhya", "kalenjin", "kamba"],
+    domain="kenyan_health",
+    task=["translation", "diagnosis_support", "early_detection"]
+)
+```
+
+</details>
+
+<details>
+<summary><strong>Phase 4: System Development 💻</strong></summary>
+
+**Backend APIs:**
+- Health prediction endpoints
+- Translation services
+- User management
+- Data analytics
+
+**Frontend Dashboards:**
+- **Healthcare providers**: Diagnostic suggestions, translation support
+- **Researchers**: Dataset analysis, model performance metrics
+- **Administrators**: User management, system monitoring
+
+**Mobile Integration:**
+- React Native cross-platform app
+- Offline functionality
+- Voice input/output
+- SMS fallback system
+
+</details>
+
+<details>
+<summary><strong>Phase 5: Testing & Deployment 🧪</strong></summary>
+
+**Pilot Program:**
+- Selected health facilities in 3 counties
+- Community health worker training
+- User feedback collection
+- Performance monitoring
+
+**Production Deployment:**
+- ICP mainnet deployment
+- Auto-scaling infrastructure
+- Monitoring and alerting
+- Backup and disaster recovery
+
+</details>
 
 ```
 kenya-health-language-ai/
@@ -392,18 +584,22 @@ Provide domain expertise and feedback
 ### 📜 License
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-### 📚 Citation
+### 📚 Academic Citation
 If you use this project in your research, please cite:
 
 ```bibtex
-Drewsky@softwares{kenya_health_language_ai,
-  title={Kenya Health Language AI: Multilingual Health Communication System},
+@software{kenya_health_language_ai_2025,
+  title={Kenya Health Language AI: Development of a Health Data Collection and Language AI System for Low-Resource Kenyan Languages},
   author={Robinson Otochi and Contributors},
   year={2025},
-  url={https://github.com/your-username/kenya-health-language-ai},
-  license={MIT}
+  url={https://github.com/robinhoodai/kenya-health-language-ai},
+  license={MIT},
+  note={Decentralized multilingual health communication system for Kenya}
 }
 ```
+
+### 🏆 Research Paper (Upcoming)
+*"Bridging the Language Gap in Digital Health: A Decentralized AI Approach for Low-Resource Kenyan Languages"* - Currently under review at the **Journal of Medical Internet Research (JMIR)**.
 
 ---
 
@@ -411,30 +607,54 @@ Drewsky@softwares{kenya_health_language_ai,
 
 <div align="center">
 
-### Ready to make a difference in Kenyan healthcare? 
+### Ready to revolutionize Kenyan healthcare through AI? 
 
-**[🚀 Set up locally](#quick-start)** • **[🤝 Join our community](#community)** • **[💰 Get funded](docs/grants.md)**
+**[🚀 Clone & Setup](#quick-start)** • **[🤝 Join our community](#community)** • **[💰 Explore funding](docs/grants.md)**
 
 ---
 
-### 📞 Contact & Support
+### 👨‍💻 About the Developer
+
+<table>
+<tr>
+<td width="200px" align="center">
+<img src="https://github.com/robinhoodai.png" width="120px" style="border-radius: 50%;" alt="Robinson Otochi"/>
+<br/>
+<strong>Robinson Otochi</strong><br/>
+<em>Lead Developer & AI Researcher</em>
+</td>
+<td>
+<strong>🎯 Project Lead & Technical Architect</strong><br/>
+Robinson is a passionate AI researcher and blockchain developer dedicated to building inclusive technology solutions for Africa. With expertise in Natural Language Processing, decentralized systems, and healthcare informatics, he leads this groundbreaking initiative to democratize health information access across Kenya's diverse linguistic landscape.
+
+<br/><br/>
+<strong>🔗 Connect:</strong><br/>
+<a href="https://github.com/robinhoodai">🐙 GitHub</a> • 
+<a href="mailto:robinson@healthlang.ai">📧 Email</a> • 
+<a href="https://linkedin.com/in/robinson-otochi">💼 LinkedIn</a> • 
+<a href="https://twitter.com/robinhoodai">🐦 Twitter</a>
+</td>
+</tr>
+</table>
+
+### 📞 Project Contact & Support
 
 <table>
 <tr>
 <td align="center">
-<strong>🎯 Project Lead</strong><br/>
-Robinson Otochi<br/>
-<a href="mailto:robinson@healthlang.ai">📧 Email</a> • <a href="https://linkedin.com/in/robinson-otochi">💼 LinkedIn</a>
+<strong>💬 Community Discord</strong><br/>
+Join our developer community<br/>
+<a href="https://discord.gg/kenya-health-ai">💬 Discord Server</a>
 </td>
 <td align="center">
-<strong>💬 Community</strong><br/>
-Join our discussions<br/>
-<a href="https://discord.gg/your-server">💬 Discord</a> • <a href="https://t.me/your-group">📱 Telegram</a>
+<strong>📱 Telegram Group</strong><br/>
+Real-time project updates<br/>
+<a href="https://t.me/KenyaHealthAI">📱 Telegram Channel</a>
 </td>
 <td align="center">
-<strong>🐛 Issues & Support</strong><br/>
-Report bugs or get help<br/>
-<a href="https://github.com/your-username/kenya-health-language-ai/issues">🐛 GitHub Issues</a>
+<strong>🐛 Issues & Bug Reports</strong><br/>
+Technical support & feature requests<br/>
+<a href="https://github.com/robinhoodai/kenya-health-language-ai/issues">🐛 GitHub Issues</a>
 </td>
 </tr>
 </table>
